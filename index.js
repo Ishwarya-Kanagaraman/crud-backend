@@ -3,7 +3,8 @@ const app=express();
 const infoRouter=require("./router.js")
 const mongoose=require("mongoose");
 const morgan=require("morgan");
-const cors=require("cors")
+const cors=require("cors");
+const PORT=process.env.PORT || 5000;
 //middleware
 app.use(cors());
 app.use(morgan("dev"))
@@ -18,6 +19,6 @@ mongoose.connect(url,{useNewUrlParser:true,useUnifiedTopology:true},(err)=>{
 // Router
 app.use("/info",infoRouter)
 // listen port
-app.listen(5000,()=>{
+app.listen(PORT,()=>{
     console.log("server started on 5000")
 })
